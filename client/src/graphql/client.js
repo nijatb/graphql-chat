@@ -5,8 +5,8 @@ import {
   InMemoryCache,
   split,
 } from "apollo-boost";
-import { getMainDefinition } from "apollo-utilities";
 import { WebSocketLink } from "apollo-link-ws";
+import { getMainDefinition } from "apollo-utilities";
 import { getAccessToken } from "../auth";
 
 const httpUrl = "http://localhost:9000/graphql";
@@ -28,7 +28,7 @@ const wsLink = new WebSocketLink({
   options: {
     // connectionParams is set as function, to use the latest value available when connection starts
     connectionParams: () => ({
-      accessToken: getAccessToken()
+      accessToken: getAccessToken(),
     }),
     lazy: true,
     reconnect: true,
@@ -36,10 +36,10 @@ const wsLink = new WebSocketLink({
 });
 
 function isSubscription(operation) {
-  const defintion = getMainDefinition(operation.query);
+  const definition = getMainDefinition(operation.query);
   return (
-    defintion.kind === "OperationDefinition" &&
-    defintion.operation === "subscription"
+    definition.kind === "OperationDefinition" &&
+    definition.operation === "subscription"
   );
 }
 

@@ -6,6 +6,7 @@
     "start": "nodemon --ext js,graphql --ignore data/ server.js"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
     "apollo-server-express": "2.14.3",
     "body-parser": "1.19.0",
     "cors": "2.8.5",
